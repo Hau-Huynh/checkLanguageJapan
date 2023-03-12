@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Japanese</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .c-language {
+    margin: 200px auto 0;
+    width: 600px;
+  }
+  .c-language p {
+    margin-bottom: 20px;
+  }
+  .c-language__input {
+    width: 100%;
+    padding: 20px 20px;
+    border: 1px solid #cdcdcd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+  }
+  .c-language__input:focus {
+    outline: none;
+  }
+</style>
+
+<body>
+
+  <div class="c-language">
+    <p>First Name</p>
+    <input type="text" class="c-language__input" placeholder="Please write first name Japanese...">
+
+    <!-- <p>Last Name</p>
+    <input type="text" class="c-language__input" placeholder="Please write last name Japanese...">
+
+    <p>Email</p>
+    <input type="text" class="c-language__input" placeholder="Please write email Japanese...">
+
+    <p>Pass word</p>
+    <input type="text" class="c-language__input" placeholder="Please write pass word Japanese..."> -->
+
+  </div>
+
+  <script>
+
+    var inputValue = document.querySelector(".c-language__input");
+    const japaneseRegex = /[\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF]/g; // thêm cờ "g" để tìm tất cả các ký tự tiếng Nhật trong chuỗi
+
+    function testLanguageJapan(inputElement) {
+      inputElement.addEventListener("input", function () {
+        // var paramValue = inputElement.value;
+        if (japaneseRegex.test(inputElement.value)) {
+          console.log(`Chuỗi đầu vào có chứa ký tự tiếng Nhật`);
+        } else {
+          console.log("Không được nhập ký tự tiếng Nhật vào ô văn bản này!");
+          inputElement.value = "";
+        }
+      });
+    }
+
+    testLanguageJapan(inputValue);
+
+  </script>
+</body>
+
+</html>
